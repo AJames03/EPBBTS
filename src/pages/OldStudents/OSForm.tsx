@@ -6,7 +6,7 @@ import { db } from '../../firebase/firebaseConfig';
 import { collection, addDoc, query, where, getDoc, setDoc, doc, arrayUnion} from 'firebase/firestore';
 
 function OSForm(){
-
+    
     type student = {
         fname: string;
         mname: string;
@@ -109,10 +109,9 @@ function OSForm(){
                     required
                 >
                     <option value={""} disabled>Select Year</option>
-                    <option value={"first year"}>First Year</option>
-                    <option value={"second year"}>Second Year</option>
-                    <option value={"third year"}>Third Year</option>
-                    <option value={"fourth year"}>Fourth Year</option>
+                    <option value={"Second Year"}>Second Year</option>
+                    <option value={"Third Year"}>Third Year</option>
+                    <option value={"Fourth Year"}>Fourth Year</option>
                 </select>
                 <button type='submit' className='w-full bg-blue-700 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-5'>Submit</button>
                 </form>

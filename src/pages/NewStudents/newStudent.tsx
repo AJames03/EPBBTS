@@ -4,7 +4,14 @@ import { db } from '../../firebase/firebaseConfig';
 import logo from '../../assets/PBBTS LOGO.png';
 import { collection, addDoc, query, where, getDocs, setDoc, doc} from 'firebase/firestore';
 
+
 function NewStudent() {
+  // Data Preprocessing and Cleaning
+  const capitalize = (str: string) =>
+    str.replace(/\s+/g, ' ').split(' ').map(word =>
+      word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+    ).join(' ');
+  
   const [fname, setFname] = useState('');
   const [mname, setMname] = useState('');
   const [lname, setLname] = useState('');
@@ -53,21 +60,21 @@ function NewStudent() {
       const studentId = `${currentYear}-${count.toString().padStart(3, '0')}`;
 
       await setDoc(doc(studentRef, studentId), {
-        fname: fname,
-        mname: mname,
-        lname: lname,
-        bday: bday,
-        age: age,
-        gender: gender,
-        address: address,
-        barangay: barangay,
-        municipal: municipal,
-        city: city,
-        contact: contact,
+        fname: capitalize(fname),
+        mname: capitalize(mname),
+        lname: capitalize(lname),
+        bday: capitalize(bday),
+        age: capitalize(age),
+        gender: capitalize(gender),
+        address: capitalize(address),
+        barangay: capitalize(barangay),
+        municipal: capitalize(municipal),
+        city: capitalize(city),
+        contact: capitalize(contact),
         email: email,
-        church: church,
-        pastor: pastor,
-        schoolYear: schoolYear
+        church: capitalize(church),
+        pastor: capitalize(pastor),
+        schoolYear: capitalize(schoolYear[0]),
       });
       navigate("/done-sub");
 
