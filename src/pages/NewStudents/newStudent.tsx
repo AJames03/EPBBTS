@@ -8,7 +8,7 @@ import { collection, addDoc, query, where, getDocs, setDoc, doc} from 'firebase/
 function NewStudent() {
   // Data Preprocessing and Cleaning
   const capitalize = (str: string) =>
-    str.replace(/\s+/g, ' ').split(' ').map(word =>
+    str.trim().replace(/\s+/g, ' ').split(' ').map(word =>
       word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
     ).join(' ');
   
@@ -26,7 +26,7 @@ function NewStudent() {
   const [email, setEmail] = useState('');
   const [church, setChurch] = useState('');
   const [pastor, setPastor] = useState('');
-  const schoolYear = ["first year"];
+  const schoolYear = ["First Year"];
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -74,7 +74,7 @@ function NewStudent() {
         email: email,
         church: capitalize(church),
         pastor: capitalize(pastor),
-        schoolYear: capitalize(schoolYear[0]),
+        schoolYear: schoolYear,
       });
       navigate("/done-sub");
 
